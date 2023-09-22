@@ -35,14 +35,14 @@ def push_to_vector_index(data, embeddings, source):
         document = {
             "key": f"{random_str}",
             "title": f"{source}",
-            "content": f"{data}",
+            "content": f"{text}",
             "path": f"{source}",
             "contentVector": embedd,
             "titleVector": title_embeddings
         }
 
         logging.info(document)
-        result = search_client.upload_documents(documents=[document])
+        result = search_client.upload_documents(documents=document)
         logging.info("Upload of new document succeeded: {}".format(result[0].succeeded))
         logging.info('**************************************')
         json_string = json.dumps(document)
